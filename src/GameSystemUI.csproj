@@ -1,0 +1,195 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<!--GenerateDocumentationFile>true</GenerateDocumentationFile-->
+	</PropertyGroup>
+
+    <!-- Define WasiSparkCore path from environment variable, fallback to relative path -->
+	<PropertyGroup>
+		<WasiSparkCorePath Condition="'$(WASI_SPARK_CORE_PATH)' != ''">$(WASI_SPARK_CORE_PATH)/</WasiSparkCorePath>
+		<WasiSparkCorePath Condition="'$(WASI_SPARK_CORE_PATH)' == ''">../../WasiCoreSDK/</WasiSparkCorePath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Configurations>Server-Debug;Server-Release;Client-Debug;Client-Release</Configurations>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Server-Debug|AnyCPU'">
+		<DefineConstants>$(DefineConstants);SERVER;DEBUG</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Server-Release|AnyCPU'">
+		<Optimize>True</Optimize>
+		<DefineConstants>$(DefineConstants);SERVER;RELESE</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Client-Debug|AnyCPU'">
+		<DefineConstants>$(DefineConstants);CLIENT;DEBUG</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Client-Release|AnyCPU'">
+		<Optimize>True</Optimize>
+		<DefineConstants>$(DefineConstants);CLIENT;RELESE</DefineConstants>
+	</PropertyGroup>
+    
+    <!-- Analyzers -->
+    <ItemGroup>
+        <Analyzer Include="$(WasiSparkCorePath)Tools\CodeGenerator\CodeGenerator.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- 基础核心命名空间 -->
+        <Using Include="GameCore.BaseInterface" />
+        <Using Include="GameCore.BaseType" />
+        <Using Include="GameCore.Extension" />
+        <Using Include="GameCore.Interface" />
+
+        <!-- 系统核心命名空间 -->
+        <Using Include="GameCore.GameSystem" />
+        <Using Include="GameCore.EntitySystem" />
+        <Using Include="GameCore.EntitySystem.Data" />
+        <Using Include="GameCore.Components" />
+        <Using Include="GameCore.Event" />
+        <Using Include="GameCore.Timers" />
+
+        <!-- 玩家和用户系统 -->
+        <Using Include="GameCore.PlayerAndUsers" />
+        <Using Include="GameCore.PlayerAndUsers.Data" />
+        <Using Include="GameCore.PlayerAndUsers.Enum" />
+
+        <!-- 技能系统 (AbilitySystem) -->
+        <Using Include="GameCore.AbilitySystem" />
+        <Using Include="GameCore.AbilitySystem.Data" />
+        <Using Include="GameCore.AbilitySystem.Manager" />
+
+        <!-- Buff系统 (BuffSystem) -->
+        <Using Include="GameCore.BuffSystem" />
+        <Using Include="GameCore.BuffSystem.Data" />
+        <Using Include="GameCore.BuffSystem.Manager" />
+
+        <!-- AI系统 -->
+        <Using Include="GameCore.AISystem" />
+        <Using Include="GameCore.AISystem.Data" />
+
+        <!-- 物品系统 -->
+        <Using Include="GameCore.ItemSystem" />
+        <Using Include="GameCore.ItemSystem.Data" />
+
+        <!-- 容器系统 -->
+        <Using Include="GameCore.Container" />
+        <Using Include="GameCore.Container.Data" />
+
+        <!-- 执行系统 -->
+        <Using Include="GameCore.Execution" />
+        <Using Include="GameCore.Execution.Data" />
+
+        <!-- 命令系统 -->
+        <Using Include="GameCore.OrderSystem" />
+
+        <!-- 场景系统 -->
+        <Using Include="GameCore.SceneSystem" />
+        <Using Include="GameCore.SceneSystem.Data" />
+
+        <!-- 生命值系统 -->
+        <Using Include="GameCore.VitalSystem" />
+
+        <!-- 形状和绘制系统 -->
+        <Using Include="GameCore.Shape" />
+        <Using Include="GameCore.Shape.Data" />
+        <Using Include="GameCore.Drawing" />
+
+        <!-- 冷却系统 -->
+        <Using Include="GameCore.CooldownSystem" />
+        <Using Include="GameCore.CooldownSystem.Data" />
+
+        <!-- 资源类型系统 -->
+        <Using Include="GameCore.ResourceType" />
+        <Using Include="GameCore.ResourceType.Data" />
+
+        <!-- 数据和结构 -->
+        <Using Include="GameCore.Data" />
+        <Using Include="GameCore.Struct" />
+
+        <!-- 外部依赖 -->
+        <Using Include="Events" />
+        <Using Include="GameData" />
+        <Using Include="GameData.Extension" />
+        <Using Include="TriggerEncapsulation.Event" />
+        <Using Include="TriggerEncapsulation.Messaging" />
+        <Using Include="EngineInterface.BaseType" />
+
+        <!-- .NET 核心命名空间 -->
+        <Using Include="Microsoft.Extensions.Logging" />
+        <Using Include="System.Numerics" />
+        <Using Include="System.Text.Json" />
+
+        <!-- 类型别名 -->
+        <Using Include="System.Double">
+            <Alias>Fixed</Alias>
+        </Using>
+    </ItemGroup>
+    <ItemGroup Condition=" '$(Configuration)' == 'Server-Debug' or '$(Configuration)' == 'Server-Release'">
+        <Reference Include="EngineInterface">
+            <HintPath>$(WasiSparkCorePath)lib/server/EngineInterface.dll</HintPath>
+        </Reference>
+        <Reference Include="Events">
+            <HintPath>$(WasiSparkCorePath)lib/server/Events.dll</HintPath>
+        </Reference>
+        <Reference Include="GameCore">
+            <HintPath>$(WasiSparkCorePath)lib/server/GameCore.dll</HintPath>
+        </Reference>
+        <Reference Include="GameData">
+            <HintPath>$(WasiSparkCorePath)lib/server/GameData.dll</HintPath>
+        </Reference>
+        <Reference Include="GameUI">
+            <HintPath>$(WasiSparkCorePath)lib/server/GameUI.dll</HintPath>
+        </Reference>
+        <Reference Include="TriggerEncapsulation">
+            <HintPath>$(WasiSparkCorePath)lib/server/TriggerEncapsulation.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup Condition=" '$(Configuration)' == 'Client-Debug' or '$(Configuration)' == 'Client-Release'">
+        <Reference Include="EngineInterface">
+            <HintPath>$(WasiSparkCorePath)lib/client/EngineInterface.dll</HintPath>
+        </Reference>
+        <Reference Include="Events">
+            <HintPath>$(WasiSparkCorePath)lib/client/Events.dll</HintPath>
+        </Reference>
+        <Reference Include="GameCore">
+            <HintPath>$(WasiSparkCorePath)lib/client/GameCore.dll</HintPath>
+        </Reference>
+        <Reference Include="GameData">
+            <HintPath>$(WasiSparkCorePath)lib/client/GameData.dll</HintPath>
+        </Reference>
+        <Reference Include="GameUI">
+            <HintPath>$(WasiSparkCorePath)lib/client/GameUI.dll</HintPath>
+        </Reference>
+        <Reference Include="TriggerEncapsulation">
+            <HintPath>$(WasiSparkCorePath)lib/client/TriggerEncapsulation.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="EngineCommon">
+            <HintPath>$(WasiSparkCorePath)lib/shared/EngineCommon.dll</HintPath>
+        </Reference>
+        <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+            <HintPath>$(WasiSparkCorePath)lib/shared/Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+        </Reference>
+        <Reference Include="DotNext">
+            <HintPath>$(WasiSparkCorePath)lib/shared/DotNext.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Resources\ExtendedEnums.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ExtendedEnums.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\ExtendedEnums.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ExtendedEnums.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="xml:space" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- CmdError 扩展枚举本地化 - 使用 "Description_" + InnerValue.GetFullName() 格式 -->
+  <data name="Description_GameSystemUI.GameInventoryUI.ECmdErrorInventory.ItemCarrierNotFound" xml:space="preserve">
+    <value>物品所有者为空</value>
+    <comment>ECmdErrorInventory.ItemCarrierNotFound</comment>
+  </data>
+  <data name="Description_GameSystemUI.GameInventoryUI.ECmdErrorInventory.SlotUINotFound" xml:space="preserve">
+    <value>物品格子UI为空</value>
+    <comment>ECmdErrorInventory.SlotUINotFound</comment>
+  </data>
+  <data name="Description_GameSystemUI.GameInventoryUI.ECmdErrorInventory.AssignableSlotNotFound" xml:space="preserve">
+    <value>找不到满足条件的格子</value>
+    <comment>ECmdErrorInventory.AssignableSlotNotFound</comment>
+  </data>
+  <data name="Description_GameSystemUI.AbilitySystemUI.ECmdErrorAbility.AbilityHostNotFound" xml:space="preserve">
+    <value>技能宿主未找到</value>
+    <comment>ECmdErrorAbility.AbilityHostNotFound</comment>
+  </data>
+  <data name="Description_GameSystemUI.AbilitySystemUI.ECmdErrorAbility.ChargeIsNotEnough" xml:space="preserve">
+    <value>技能充能层数不足</value>
+    <comment>ECmdErrorAbility.ChargeIsNotEnough</comment>
+  </data>
+  
+  <!-- ItemCategory 扩展枚举本地化 -->
+  <data name="Description_GameSystemUI.GameInventoryUI.Advanced.EMyItemCategory.Test1" xml:space="preserve">
+    <value>测试分类1</value>
+    <comment>EMyItemCategory.Test1</comment>
+  </data>
+  <data name="Description_GameSystemUI.GameInventoryUI.Advanced.EMyItemCategory.Test2" xml:space="preserve">
+    <value>测试分类2</value>
+    <comment>EMyItemCategory.Test2</comment>
+  </data>
+  <data name="Description_GameSystemUI.GameInventoryUI.Advanced.EMyItemCategory.Test3" xml:space="preserve">
+    <value>测试分类3</value>
+    <comment>EMyItemCategory.Test3</comment>
+  </data>
+  <data name="Description_GameSystemUI.GameInventoryUI.Advanced.EDefaultItemCategory.All" xml:space="preserve">
+    <value>全部</value>
+    <comment>EDefaultItemCategory.All</comment>
+  </data>
+</root>
